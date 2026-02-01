@@ -7,8 +7,8 @@ function loadNativeAd() {
   const script = document.createElement('script');
   script.async = true;
   script.setAttribute('data-cfasync', 'false');
-  script.src =
-    'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
+  // script.src =
+  //   'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
 
   document.getElementById(
     'container-e7154f6d16bd15375f544c59c8391510'
