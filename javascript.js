@@ -1,3 +1,23 @@
+let nativeAdLoaded = false;
+
+function loadNativeAd() {
+  if (nativeAdLoaded) return;
+  nativeAdLoaded = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.setAttribute('data-cfasync', 'false');
+  script.src =
+    'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
+
+  document.getElementById(
+    'container-e7154f6d16bd15375f544c59c8391510'
+  ).appendChild(script);
+
+  document.getElementById('nativeAd').classList.remove('hidden');
+}
+
+
 const classes = ['Safe', 'Euclid', 'Keter', 'Thaumiel'];
 
 const anomalies = [
@@ -93,6 +113,10 @@ Further testing has been approved under controlled conditions.
 `, 0.4);
   }
 
+ doc += `
+— End of File —
+`;
+
   return doc;
 }
 
@@ -106,12 +130,12 @@ document.getElementById('generateBtn').addEventListener('click', () => {
   document.getElementById('output').textContent =
     generateSCP(selectedClass, tone);
 
-  document.getElementById('nativeAd').classList.remove('hidden');
   document.getElementById('shareActions').classList.remove('hidden');
-
   document.getElementById('generateBtn').textContent = 'Generate Another SCP';
-});
 
+  // 🔥 load ad only after user intent
+  loadNativeAd();
+});
 
 
 // ✅ COPY (with fallback)
