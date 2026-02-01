@@ -15,6 +15,14 @@ function loadNativeAd() {
   ad.appendChild(s);
 }
 
+let adLoaded = false;
+
+window.addEventListener('scroll', () => {
+  if (adLoaded) return;
+  adLoaded = true;
+  loadNativeAd();
+});
+
 const classes = ['Safe', 'Euclid', 'Keter', 'Thaumiel'];
 
 const anomalies = [
@@ -131,7 +139,7 @@ document.getElementById('generateBtn').addEventListener('click', () => {
     'Generate Another SCP';
 
   // 🔥 load ad only after user intent
-  loadNativeAd();
+  // loadNativeAd();
 });
 
 
