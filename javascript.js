@@ -89,3 +89,5 @@ document.getElementById('shareBtn').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href);
   }
 });
+
+document.getElementById('nativeAd').classList.remove('hidden');
