@@ -15,32 +15,6 @@ function loadNativeAd() {
   ad.appendChild(s);
 }
 
-let bannerLoaded = false;
-
-function loadBannerAd() {
-  if (bannerLoaded) return;
-  bannerLoaded = true;
-
-  const s1 = document.createElement('script');
-  s1.innerHTML = `
-    atOptions = {
-      'key': 'YOUR_BANNER_KEY',
-      'format': 'iframe',
-      'height': 320,
-      'width': 720,
-      'params': {}
-    };
-  `;
-
-  const s2 = document.createElement('script');
-  s2.src = 'https://www.highperformanceformat.com/YOUR_BANNER_KEY/invoke.js';
-
-  const container = document.getElementById('bannerAd');
-  container.classList.remove('hidden');
-  container.appendChild(s1);
-  container.appendChild(s2);
-}
-
 
 let adLoaded = false;
 
@@ -49,16 +23,6 @@ window.addEventListener('scroll', () => {
   adLoaded = true;
   loadNativeAd();
 });
-
-const observer = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) {
-    loadBannerAd();
-    observer.disconnect();
-  }
-});
-
-observer.observe(document.getElementById('bannerAd'));
-
 
 const classes = ['Safe', 'Euclid', 'Keter', 'Thaumiel'];
 
