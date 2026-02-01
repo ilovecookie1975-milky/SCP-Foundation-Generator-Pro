@@ -20,31 +20,27 @@ function random(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateSCP(selectedClass = null) {
-  const number = Math.floor(100 + Math.random() * 900);
-  const objectClass = selectedClass || random(classes);
+function generateSCP(selectedClass, tone) {
+  const styles = {
+    clinical: 'Documentation follows standard Foundation protocol.',
+    horror: 'Personnel describe overwhelming dread during exposure.',
+    disturbing: 'Multiple staff resigned after the incident.',
+    classified: 'This section is restricted by O5 Command.'
+  };
 
   return `
-Item #: SCP-${number}
-Object Class: ${objectClass}
-
-Special Containment Procedures:
-SCP-${number} is to be contained in a reinforced containment chamber located at Site-██.
-Access is restricted to Level-3 personnel and above. Any personnel reporting auditory
-hallucinations, intrusive thoughts, or feelings of being observed while near SCP-${number}
-must report immediately for psychological evaluation.
+Item #: SCP-${Math.floor(100 + Math.random() * 900)}
+Object Class: ${selectedClass || random(classes)}
 
 Description:
-SCP-${number} appears as ${random(anomalies)}. Initial discovery reports indicate anomalous
-behavior triggered by prolonged observation. Subjects exposed for more than █ minutes
-report vivid nightmares and memory distortion.
+${styles[tone]}
 
-Addendum ${number}-A:
-Testing has been suspended following Incident-${number}-██, in which SCP-${number}
-demonstrated adaptive behavior previously undocumented. Further research requires
-approval from O5 Command.
+Further details have been redacted.
 `;
 }
+
+const tone = document.getElementById('toneSelect').value;
+document.getElementById('output').textContent = generateSCP(selectedClass, tone);
 
 // Generate
 document.getElementById('generateBtn').addEventListener('click', () => {
@@ -91,3 +87,23 @@ document.getElementById('shareBtn').addEventListener('click', () => {
 });
 
 document.getElementById('nativeAd').classList.remove('hidden');
+
+const getText = () =>
+  document.getElementById('output').textContent;
+
+document.getElementById('copyBtn').onclick = () => {
+  navigator.clipboard.writeText(getText());
+  alert('Copied!');
+};
+
+document.getElementById('shareX').onclick = () => {
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(getText())}`;
+  window.open(url, '_blank');
+};
+
+document.getElementById('shareReddit').onclick = () => {
+  const url = `https://www.reddit.com/submit?title=Generated SCP&text=${encodeURIComponent(getText())}`;
+  window.open(url, '_blank');
+};
+
+document.getElementById('shareActions').classList.remove('hidden');
