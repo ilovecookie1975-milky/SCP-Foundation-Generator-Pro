@@ -40,3 +40,20 @@ Further investigation is ongoing. Personnel are advised to follow standard safet
 document.getElementById('generateBtn').addEventListener('click', () => {
   document.getElementById('output').textContent = generateSCP();
 });
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const text = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(text);
+  alert('SCP copied to clipboard!');
+});
+
+document.getElementById('shareBtn').addEventListener('click', () => {
+  if (navigator.share) {
+    navigator.share({
+      title: 'SCP Foundation Generator',
+      text: document.getElementById('output').textContent,
+    });
+  } else {
+    alert('Sharing not supported on this device.');
+  }
+});
