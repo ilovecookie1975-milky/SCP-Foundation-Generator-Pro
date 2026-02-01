@@ -130,8 +130,8 @@ document.getElementById('generateBtn').addEventListener('click', () => {
   document.getElementById('output').textContent =
     generateSCP(selectedClass, tone);
 
-  document.getElementById('shareActions').classList.remove('hidden');
-  document.getElementById('generateBtn').textContent = 'Generate Another SCP';
+  document.getElementById('generateBtn').textContent =
+    'Generate Another SCP';
 
   // 🔥 load ad only after user intent
   loadNativeAd();
@@ -177,17 +177,22 @@ document.getElementById('copyBtnShare').addEventListener('click', () => {
 const getText = () =>
   document.getElementById('output').textContent;
 
-document.getElementById('copyBtn').onclick = () => {
-  navigator.clipboard.writeText(getText());
-  alert('Copied!');
-};
+// document.getElementById('copyBtn').onclick = () => {
+//   navigator.clipboard.writeText(getText());
+//   alert('Copied!');
+// };
 
-document.getElementById('shareX').onclick = () => {
-  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(getText())}`;
-  window.open(url, '_blank');
-};
+// document.getElementById('shareX').onclick = () => {
+//   const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(getText())}`;
+//   window.open(url, '_blank');
+// };
 
-document.getElementById('shareReddit').onclick = () => {
-  const url = `https://www.reddit.com/submit?title=Generated SCP&text=${encodeURIComponent(getText())}`;
-  window.open(url, '_blank');
-};
+// document.getElementById('shareReddit').onclick = () => {
+//   const url = `https://www.reddit.com/submit?title=Generated SCP&text=${encodeURIComponent(getText())}`;
+//   window.open(url, '_blank');
+// };
+
+function safeShow(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('hidden');
+}
