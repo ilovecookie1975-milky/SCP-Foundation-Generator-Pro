@@ -20,38 +20,102 @@ function random(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateSCP(selectedClass, tone) {
-  const styles = {
-    clinical: 'Documentation follows standard Foundation protocol.',
-    horror: 'Personnel describe overwhelming dread during exposure.',
-    disturbing: 'Multiple staff resigned after the incident.',
-    classified: 'This section is restricted by O5 Command.'
-  };
-
-  return `
-Item #: SCP-${Math.floor(100 + Math.random() * 900)}
-Object Class: ${selectedClass || random(classes)}
-
-Description:
-${styles[tone]}
-
-Further details have been redacted.
-`;
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-const tone = document.getElementById('toneSelect').value;
-document.getElementById('output').textContent = generateSCP(selectedClass, tone);
+function maybe(section, chance = 0.5) {
+  return Math.random() < chance ? section : '';
+}
+
+const intros = [
+  "Initial containment reports describe an anomalous object of unclear origin.",
+  "Early Foundation documentation notes irregular activity surrounding the entity.",
+  "First-response teams reported unusual environmental readings upon discovery.",
+  "Recovered field notes indicate an anomaly requiring immediate containment."
+];
+
+const effects = [
+  "Subjects report persistent unease and difficulty concentrating.",
+  "Extended exposure results in vivid dreams and memory fragmentation.",
+  "Personnel have described auditory hallucinations with no identifiable source.",
+  "Neurological scans show irregular patterns following interaction."
+];
+
+const discoveryLogs = [
+  "SCP was discovered following civilian reports of unexplained disappearances.",
+  "The anomaly was recovered from an abandoned structure during a routine sweep.",
+  "Foundation assets intercepted local authorities before public exposure occurred.",
+  "The object was located after an automated surveillance anomaly alert."
+];
+
+const incidentLogs = [
+  "A containment breach occurred during routine testing, resulting in ██ injuries.",
+  "Incident resulted in temporary loss of Site power and data corruption.",
+  "Multiple personnel required amnestic treatment following exposure.",
+  "Testing was suspended after SCP behavior escalated unexpectedly."
+];
+
+function generateSCP(selectedClass, tone) {
+  const number = Math.floor(100 + Math.random() * 900);
+  const objectClass = selectedClass || random(classes);
+
+  let doc = `
+Item #: SCP-${number}
+Object Class: ${objectClass}
+
+Special Containment Procedures:
+SCP-${number} is housed at Site-██ under standard containment conditions.
+Access is limited to authorized personnel only.
+`;
+
+  doc += `
+Description:
+${pick(intros)}
+SCP-${number} appears as ${random(anomalies)}.
+${pick(effects)}
+`;
+
+  doc += maybe(`
+Discovery Log:
+${pick(discoveryLogs)}
+`, 0.7);
+
+  if (objectClass === 'Keter') {
+    doc += `
+Incident Report:
+${pick(incidentLogs)}
+`;
+  } else {
+    doc += maybe(`
+Addendum:
+Further testing has been approved under controlled conditions.
+`, 0.4);
+  }
+
+  return doc;
+}
+
+
 
 // Generate
 document.getElementById('generateBtn').addEventListener('click', () => {
   const selectedClass = document.getElementById('classSelect').value || null;
-  document.getElementById('output').textContent = generateSCP(selectedClass);
+  const tone = document.getElementById('toneSelect').value;
+
+  document.getElementById('output').textContent =
+    generateSCP(selectedClass, tone);
+
+  document.getElementById('nativeAd').classList.remove('hidden');
+  document.getElementById('shareActions').classList.remove('hidden');
+
   document.getElementById('generateBtn').textContent = 'Generate Another SCP';
 });
 
 
+
 // ✅ COPY (with fallback)
-document.getElementById('copyBtn').addEventListener('click', () => {
+document.getElementById('copyBtnMain').addEventListener('click', () => {
   const text = document.getElementById('output').textContent;
 
   if (navigator.clipboard && window.isSecureContext) {
@@ -71,7 +135,7 @@ document.getElementById('copyBtn').addEventListener('click', () => {
 });
 
 // ✅ SHARE (with fallback)
-document.getElementById('shareBtn').addEventListener('click', () => {
+document.getElementById('copyBtnShare').addEventListener('click', () => {
   const text = document.getElementById('output').textContent;
 
   if (navigator.share) {
@@ -85,8 +149,6 @@ document.getElementById('shareBtn').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href);
   }
 });
-
-document.getElementById('nativeAd').classList.remove('hidden');
 
 const getText = () =>
   document.getElementById('output').textContent;
@@ -105,5 +167,3 @@ document.getElementById('shareReddit').onclick = () => {
   const url = `https://www.reddit.com/submit?title=Generated SCP&text=${encodeURIComponent(getText())}`;
   window.open(url, '_blank');
 };
-
-document.getElementById('shareActions').classList.remove('hidden');
