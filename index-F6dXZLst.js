@@ -37,23 +37,43 @@ Further investigation is ongoing. Personnel are advised to follow standard safet
 `;
 }
 
+// Generate
 document.getElementById('generateBtn').addEventListener('click', () => {
   document.getElementById('output').textContent = generateSCP();
 });
 
+// ✅ COPY (with fallback)
 document.getElementById('copyBtn').addEventListener('click', () => {
   const text = document.getElementById('output').textContent;
-  navigator.clipboard.writeText(text);
-  alert('SCP copied to clipboard!');
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('SCP copied to clipboard!');
+    });
+  } else {
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert('SCP copied to clipboard!');
+  }
 });
 
+// ✅ SHARE (with fallback)
 document.getElementById('shareBtn').addEventListener('click', () => {
+  const text = document.getElementById('output').textContent;
+
   if (navigator.share) {
     navigator.share({
       title: 'SCP Foundation Generator',
-      text: document.getElementById('output').textContent,
+      text: text,
+      url: window.location.href
     });
   } else {
-    alert('Sharing not supported on this device.');
+    alert('Sharing works on mobile devices. Link copied instead.');
+    navigator.clipboard.writeText(window.location.href);
   }
 });
