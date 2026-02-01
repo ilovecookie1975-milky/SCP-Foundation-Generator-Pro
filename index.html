@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +10,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
     body {
@@ -17,12 +19,14 @@
       background-color: #0a0a0a;
       color: #d1d5db;
     }
+
     .scp-document {
       font-family: 'Courier Prime', monospace;
       white-space: pre-wrap;
     }
   </style>
 </head>
+
 <body class="min-h-screen flex items-center justify-center px-4">
 
   <div class="max-w-3xl w-full bg-zinc-900 rounded-xl shadow-lg p-6">
@@ -30,17 +34,22 @@
       SCP Foundation Generator Pro
     </h1>
 
-    <button
-      id="generateBtn"
-      class="w-full mb-4 bg-red-700 hover:bg-red-800 transition rounded-lg py-2 font-semibold"
-    >
+    <button id="generateBtn" class="w-full mb-4 bg-red-700 hover:bg-red-800 transition rounded-lg py-2 font-semibold">
       Generate SCP Document
     </button>
 
-    <div
-      id="output"
-      class="scp-document bg-black p-4 rounded-lg border border-zinc-700 text-sm"
-    >
+    <div class="flex gap-2 mb-4">
+      <button id="copyBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
+        Copy SCP
+      </button>
+
+      <button id="shareBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
+        Share
+      </button>
+    </div>
+
+
+    <div id="output" class="scp-document bg-black p-4 rounded-lg border border-zinc-700 text-sm">
       Click the button to generate an SCP file.
     </div>
   </div>
@@ -48,4 +57,5 @@
   <!-- Main script -->
   <script src="./index-F6dXZLst.js"></script>
 </body>
+
 </html>
