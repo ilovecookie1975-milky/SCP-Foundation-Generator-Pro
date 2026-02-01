@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="99ee1788-2340-42c6-b361-21977b229e79"></script>
     <title>SCP Foundation Generator Pro – Create SCP Documents Instantly</title>
 
     <!-- Tailwind -->
@@ -47,6 +48,14 @@
                 <option value="Thaumiel">Thaumiel</option>
             </select>
 
+            <select id="toneSelect" class="w-full mb-3 bg-zinc-800 border border-zinc-700 rounded-lg p-2 text-sm">
+                <option value="clinical">Clinical</option>
+                <option value="horror">Horror</option>
+                <option value="disturbing">Disturbing</option>
+                <option value="classified">Classified</option>
+            </select>
+
+
             <button id="generateBtn"
                 class="w-full mb-4 bg-red-700 hover:bg-red-800 transition rounded-lg py-2 font-semibold">
                 Generate SCP Document
@@ -65,6 +74,12 @@
 
             <div id="output" class="scp-document bg-black p-4 rounded-lg border border-zinc-700 text-sm">
                 Click the button to generate an SCP file.
+            </div>
+
+            <div id="shareActions" class="hidden mt-4 flex gap-2 justify-center">
+                <button id="copyBtn" class="px-3 py-1 bg-zinc-800 rounded text-sm">Copy</button>
+                <button id="shareX" class="px-3 py-1 bg-zinc-800 rounded text-sm">Share X</button>
+                <button id="shareReddit" class="px-3 py-1 bg-zinc-800 rounded text-sm">Reddit</button>
             </div>
 
             <!-- Adsterra Native Banner -->
@@ -144,7 +159,6 @@
                 <div id="container-e7154f6d16bd15375f544c59c8391510"></div>
             </div>
         </div>
-
 
         <!-- Footer Links -->
         <div>
