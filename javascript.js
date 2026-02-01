@@ -1,15 +1,19 @@
 let nativeAdLoaded = false;
 
 function loadNativeAd() {
-  if (document.getElementById('nativeAd').children.length > 0) return;
+  const ad = document.getElementById('nativeAd');
+
+  if (ad.dataset.loaded) return;
+
+  ad.classList.remove('hidden'); // 👈 THIS WAS MISSING
+  ad.dataset.loaded = 'true';
 
   const s = document.createElement('script');
   s.async = true;
   s.src = 'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
 
-  document.getElementById('nativeAd').appendChild(s);
+  ad.appendChild(s);
 }
-
 
 const classes = ['Safe', 'Euclid', 'Keter', 'Thaumiel'];
 
