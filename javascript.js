@@ -1,20 +1,13 @@
 let nativeAdLoaded = false;
 
 function loadNativeAd() {
-  if (nativeAdLoaded) return;
-  nativeAdLoaded = true;
+  if (document.getElementById('nativeAd').children.length > 0) return;
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.setAttribute('data-cfasync', 'false');
-  // script.src =
-  //   'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://pl28625157.effectivegatecpm.com/e7154f6d16bd15375f544c59c8391510/invoke.js';
 
-  document.getElementById(
-    'container-e7154f6d16bd15375f544c59c8391510'
-  ).appendChild(script);
-
-  document.getElementById('nativeAd').classList.remove('hidden');
+  document.getElementById('nativeAd').appendChild(s);
 }
 
 
