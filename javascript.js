@@ -20,27 +20,39 @@ function random(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateSCP() {
+function generateSCP(selectedClass = null) {
   const number = Math.floor(100 + Math.random() * 900);
+  const objectClass = selectedClass || random(classes);
 
   return `
 Item #: SCP-${number}
-
-Object Class: ${random(classes)}
+Object Class: ${objectClass}
 
 Special Containment Procedures:
-SCP-${number} ${random(procedures)}.
+SCP-${number} is to be contained in a reinforced containment chamber located at Site-██.
+Access is restricted to Level-3 personnel and above. Any personnel reporting auditory
+hallucinations, intrusive thoughts, or feelings of being observed while near SCP-${number}
+must report immediately for psychological evaluation.
 
 Description:
-SCP-${number} is described as ${random(anomalies)}.
-Further investigation is ongoing. Personnel are advised to follow standard safety protocols at all times.
+SCP-${number} appears as ${random(anomalies)}. Initial discovery reports indicate anomalous
+behavior triggered by prolonged observation. Subjects exposed for more than █ minutes
+report vivid nightmares and memory distortion.
+
+Addendum ${number}-A:
+Testing has been suspended following Incident-${number}-██, in which SCP-${number}
+demonstrated adaptive behavior previously undocumented. Further research requires
+approval from O5 Command.
 `;
 }
 
 // Generate
 document.getElementById('generateBtn').addEventListener('click', () => {
-  document.getElementById('output').textContent = generateSCP();
+  const selectedClass = document.getElementById('classSelect').value || null;
+  document.getElementById('output').textContent = generateSCP(selectedClass);
+  document.getElementById('generateBtn').textContent = 'Generate Another SCP';
 });
+
 
 // ✅ COPY (with fallback)
 document.getElementById('copyBtn').addEventListener('click', () => {
