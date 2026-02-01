@@ -2,109 +2,111 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SCP Foundation Generator Pro</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCP Foundation Generator Pro</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;600;700&display=swap"
-    rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0a0a;
-      color: #d1d5db;
-    }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #d1d5db;
+        }
 
-    .scp-document {
-      font-family: 'Courier Prime', monospace;
-      white-space: pre-wrap;
-    }
-  </style>
+        .scp-document {
+            font-family: 'Courier Prime', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center px-4">
+<body class="min-h-screen flex flex-col items-center px-4">
 
-  <div class="max-w-3xl w-full bg-zinc-900 rounded-xl shadow-lg p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">
-      SCP Foundation Generator Pro
-    </h1>
+    <main class="flex-1 flex items-center justify-center w-full">
+        <div class="max-w-3xl w-full bg-zinc-900 rounded-xl shadow-lg p-6">
+            <h1 class="text-2xl font-bold mb-4 text-center">
+                SCP Foundation Generator Pro
+            </h1>
 
-    <button id="generateBtn" class="w-full mb-4 bg-red-700 hover:bg-red-800 transition rounded-lg py-2 font-semibold">
-      Generate SCP Document
-    </button>
+            <button id="generateBtn"
+                class="w-full mb-4 bg-red-700 hover:bg-red-800 transition rounded-lg py-2 font-semibold">
+                Generate SCP Document
+            </button>
 
-    <div class="flex gap-2 mb-4">
-      <button id="copyBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
-        Copy SCP
-      </button>
+            <div class="flex gap-2 mb-4">
+                <button id="copyBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
+                    Copy SCP
+                </button>
 
-      <button id="shareBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
-        Share
-      </button>
-    </div>
+                <button id="shareBtn" class="flex-1 bg-zinc-700 hover:bg-zinc-600 transition rounded-lg py-2 text-sm">
+                    Share
+                </button>
+            </div>
 
 
-    <div id="output" class="scp-document bg-black p-4 rounded-lg border border-zinc-700 text-sm">
-      Click the button to generate an SCP file.
-    </div>
+            <div id="output" class="scp-document bg-black p-4 rounded-lg border border-zinc-700 text-sm">
+                Click the button to generate an SCP file.
+            </div>
 
-    <section class="mt-10 text-sm text-zinc-400 leading-relaxed">
-      <h2 class="text-lg font-semibold text-zinc-200 mb-2">
-        SCP Foundation Generator – Create Anomalous Documents Instantly
-      </h2>
+            <section class="mt-10 text-sm text-zinc-400 leading-relaxed">
+                <h2 class="text-lg font-semibold text-zinc-200 mb-2">
+                    SCP Foundation Generator – Create Anomalous Documents Instantly
+                </h2>
 
-      <p class="mb-3">
-        The SCP Foundation Generator Pro is a free online tool designed for horror writers,
-        SCP fans, and content creators who want to generate realistic SCP-style documents
-        instantly. Inspired by the SCP Foundation universe, this generator creates unique
-        anomalous entities complete with object classes, containment procedures, and
-        unsettling descriptions.
-      </p>
+                <p class="mb-3">
+                    The SCP Foundation Generator Pro is a free online tool designed for horror writers,
+                    SCP fans, and content creators who want to generate realistic SCP-style documents
+                    instantly. Inspired by the SCP Foundation universe, this generator creates unique
+                    anomalous entities complete with object classes, containment procedures, and
+                    unsettling descriptions.
+                </p>
 
-      <p class="mb-3">
-        Whether you are writing short horror stories, creating YouTube or TikTok content,
-        roleplaying, or building a game world, this SCP generator helps you spark ideas
-        quickly. Each generated SCP file follows the familiar SCP format used by the
-        Foundation, making it feel authentic and immersive.
-      </p>
+                <p class="mb-3">
+                    Whether you are writing short horror stories, creating YouTube or TikTok content,
+                    roleplaying, or building a game world, this SCP generator helps you spark ideas
+                    quickly. Each generated SCP file follows the familiar SCP format used by the
+                    Foundation, making it feel authentic and immersive.
+                </p>
 
-      <p class="mb-3">
-        Unlike many AI tools, this generator runs entirely in your browser. No account,
-        no login, and no usage limits. Every click produces a new SCP concept that can be
-        copied, shared, or expanded into a full story. This makes it ideal for writers who
-        need fast inspiration without distractions.
-      </p>
+                <p class="mb-3">
+                    Unlike many AI tools, this generator runs entirely in your browser. No account,
+                    no login, and no usage limits. Every click produces a new SCP concept that can be
+                    copied, shared, or expanded into a full story. This makes it ideal for writers who
+                    need fast inspiration without distractions.
+                </p>
 
-      <p class="mb-3">
-        The SCP Foundation universe is known for its eerie anomalies, secret containment
-        facilities, and dark documentation style. This tool embraces that atmosphere,
-        generating content that feels unsettling, mysterious, and creative. From sentient
-        objects to dangerous entities, every SCP is designed to feel unique.
-      </p>
+                <p class="mb-3">
+                    The SCP Foundation universe is known for its eerie anomalies, secret containment
+                    facilities, and dark documentation style. This tool embraces that atmosphere,
+                    generating content that feels unsettling, mysterious, and creative. From sentient
+                    objects to dangerous entities, every SCP is designed to feel unique.
+                </p>
 
-      <p>
-        Use this SCP generator as often as you like. New content is generated instantly,
-        making it perfect for brainstorming sessions, horror writing prompts, or viral
-        social media posts.
-      </p>
-    </section>
+                <p>
+                    Use this SCP generator as often as you like. New content is generated instantly,
+                    making it perfect for brainstorming sessions, horror writing prompts, or viral
+                    social media posts.
+                </p>
+            </section>
 
-    <footer class="mt-10 text-center text-xs text-zinc-500">
-      <a href="./about.html">About</a> ·
-      <a href="./privacy.html">Privacy</a> ·
-      <a href="./terms.html">Terms</a>
+        </div>
+    </main>
+
+    <footer class="mt-6 mb-4 text-center text-xs text-zinc-500">
+        <a href="./about.html">About</a> ·
+        <a href="./privacy.html">Privacy</a> ·
+        <a href="./terms.html">Terms</a>
     </footer>
-  </div>
 
-  <!-- Main script -->
-  <script src="./index-F6dXZLst.js"></script>
-  
+    <!-- Main script -->
+    <script src="./index-F6dXZLst.js"></script>
 </body>
+
 </html>
-
-
